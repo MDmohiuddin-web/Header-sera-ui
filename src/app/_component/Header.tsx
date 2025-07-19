@@ -3,19 +3,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Flower, Menu, Moon, Sun, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Flower, Menu, X } from "lucide-react";
+
+import ThemeToggleButton from "./ThemeToggleButton";
 
 // Header component that contains the navigation menu and theme toggle button
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu open/close
-  const { theme, setTheme } = useTheme(); // Theme-related functionality
+
   const path = usePathname(); // Current path for active link indication
 
   // Function to toggle the theme between dark and light
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+
 
   // Navigation links
   const navLinks = [
@@ -61,17 +60,7 @@ const Header = () => {
             </Link>
 
             {/* Theme toggle button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:focus:ring-gray-400 transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </button>
+           <ThemeToggleButton />
 
             {/* Mobile menu toggle button */}
             <div className="md:hidden">
