@@ -219,14 +219,16 @@ export default function EnhancedCarousel() {
   return (
     <section className={`w-full flex-col items-center justify-center font-sans overflow-hidden ${isFullscreen ? 'fixed inset-0 z-50 bg-black' : ''}`}>
       <div 
-        className={`${isFullscreen ? 'w-full h-full' : 'w-full max-w-6xl mx-auto p-4'}`}
+        className={`${isFullscreen ? 'w-full h-full' : 'w-full max-w-7xl mx-auto p-4'}`}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className={`relative flex w-full flex-col rounded-3xl border border-white/10 dark:border-white/10 bg-white dark:bg-neutral-900 p-4 pt-6 md:p-6 ${isFullscreen ? 'h-full' : ''}`}>
+        <div className={`relative flex w-full flex-col rounded-3xl border border-white/10
+           dark:border-white/10 bg-white  dark:bg-neutral-900 p-4 pt-6 md:p-6 ${isFullscreen ? 'h-full' : ''}`}>
           
           {/* Carousel Container */}
-          <div className={`relative w-full flex items-center justify-center overflow-hidden ${isFullscreen ? 'flex-1' : 'h-[280px] md:h-[400px]'}`}>
+          <div className={`relative w-full flex items-center justify-center overflow-hidden ${isFullscreen ?
+             'flex-1' : 'h-[280px] md:h-[400px]'}`}>
             <motion.div  
               className="w-full h-full flex items-center justify-center"
               drag="x"
@@ -336,8 +338,8 @@ function Card({ card, index, activeIndex, totalCards }: CardProps) {
         {/* Enhanced overlay with more information */}
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <h4 className="text-white text-lg font-semibold">{card.title}</h4>
+            <div className="flex md:flex-row flex-col items-center justify-between">
+              <h4 className="text-white  md:text-lg font-semibold">{card.title}</h4>
               <Badge className="text-xs bg-white/20 text-white border-white/20">
                 {card.category}
               </Badge>
@@ -347,7 +349,7 @@ function Card({ card, index, activeIndex, totalCards }: CardProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-white/90 text-sm leading-relaxed"
+                className="text-white/90 text-sm leading-relaxed hidden md:block"
               >
                 {card.description}
               </motion.p>
